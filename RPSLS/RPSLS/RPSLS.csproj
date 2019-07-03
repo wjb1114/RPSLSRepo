@@ -43,8 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIPlayer.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="HumanPlayer.cs" />
+    <Compile Include="LizardMove.cs" />
+    <Compile Include="PaperMove.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerMove.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RockMove.cs" />
+    <Compile Include="ScissorsMove.cs" />
+    <Compile Include="SpockMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
