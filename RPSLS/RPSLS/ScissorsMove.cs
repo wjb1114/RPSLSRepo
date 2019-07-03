@@ -8,5 +8,22 @@ namespace RPSLS
 {
     class ScissorsMove : PlayerMove
     {
+        public ScissorsMove(string moveName) : base(moveName)
+        {
+
+        }
+
+        public override bool GetWinner(PlayerMove opposingMove)
+        {
+            string opposingName = opposingMove.GiveMoveName();
+            if (opposingName == "paper" || opposingName == "lizard")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

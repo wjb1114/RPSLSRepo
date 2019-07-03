@@ -20,14 +20,24 @@ namespace RPSLS
             switch (choiceNum)
             {
                 case 1:
+                    Console.WriteLine("AI Player selected rock!");
+                    Console.ReadKey();
                     return "rock";
                 case 2:
+                    Console.WriteLine("AI Player selected paper!");
+                    Console.ReadKey();
                     return "paper";
                 case 3:
+                    Console.WriteLine("AI Player selected scissors!");
+                    Console.ReadKey();
                     return "scissors";
                 case 4:
+                    Console.WriteLine("AI Player selected lizard!");
+                    Console.ReadKey();
                     return "lizard";
                 case 5:
+                    Console.WriteLine("AI Player selected spock!");
+                    Console.ReadKey();
                     return "spock";
                 default:
                     return "invalid";

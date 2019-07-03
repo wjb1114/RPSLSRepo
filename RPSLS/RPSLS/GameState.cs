@@ -25,14 +25,6 @@ namespace RPSLS
             }
             while (playerOneChoice.ToLower() != "human" && playerOneChoice != "ai");
 
-            string playerTwoChoice = "";
-            do
-            {
-                Console.WriteLine("Will the second player be a Human or an AI?");
-                playerTwoChoice = Console.ReadLine();
-            }
-            while (playerTwoChoice.ToLower() != "human" && playerTwoChoice != "ai");
-
             if (playerOneChoice.ToLower() == "human")
             {
                 playerOne = new HumanPlayer();
@@ -41,6 +33,14 @@ namespace RPSLS
             {
                 playerOne = new AIPlayer();
             }
+
+            string playerTwoChoice = "";
+            do
+            {
+                Console.WriteLine("Will the second player be a Human or an AI?");
+                playerTwoChoice = Console.ReadLine();
+            }
+            while (playerTwoChoice.ToLower() != "human" && playerTwoChoice != "ai");
 
             if (playerTwoChoice.ToLower() == "human")
             {
@@ -56,12 +56,19 @@ namespace RPSLS
                 GameLoop(playerOne, playerTwo);
             }
             while (playerOne.score < 2 && playerTwo.score < 2);
+
+            if (playerOne.score >= 2)
+            {
+                Console.WriteLine("Player One wins with " + playerOne.score + " points!");
+            }
+            else if (playerTwo.score >= 2)
+            {
+                Console.WriteLine("Player Two wins with " + playerTwo.score + " points!");
+            }
         }
 
         public void GameLoop(Player first, Player second)
         {
-            PlayerMove playerOneMove;
-            PlayerMove playerTwoMove;
             string playerOneMoveStr = "invalid";
             string playerTwoMoveStr = "invalid";
             Console.WriteLine("Player One:");
@@ -69,14 +76,35 @@ namespace RPSLS
             {
                 playerOneMoveStr = playerOne.GetChoice();
             }
-            while (playerOneMoveStr == "invalid");
+            while (playerOneMoveStr.ToLower() != "rock" && playerOneMoveStr.ToLower() != "paper" && playerOneMoveStr.ToLower() != "scissors" && playerOneMoveStr.ToLower() != "lizard" && playerOneMoveStr.ToLower() != "spock");
 
             Console.WriteLine("Player Two:");
             do
             {
                 playerTwoMoveStr = playerTwo.GetChoice();
             }
-            while (playerTwoMoveStr == "invalid");
+            while (playerTwoMoveStr.ToLower() != "rock" && playerTwoMoveStr.ToLower() != "paper" && playerTwoMoveStr.ToLower() != "scissors" && playerTwoMoveStr.ToLower() != "lizard" && playerTwoMoveStr.ToLower() != "spock");
+
+            playerOne.AssignPlayerMove(playerOneMoveStr);
+            playerTwo.AssignPlayerMove(playerTwoMoveStr);
+
+            bool playerOneWin = playerOne.GetWinOrLose(playerTwo.move);
+            bool playerTwoWin = playerTwo.GetWinOrLose(playerOne.move);
+
+            if (playerOneWin == true && playerTwoWin == false)
+            {
+                Console.WriteLine("Player One gets a point!");
+                playerOne.score++;
+            }
+            else if (playerOneWin == false && playerTwoWin == true)
+            {
+                Console.WriteLine("Player Two gets a point!");
+                playerTwo.score++;
+            }
+            else
+            {
+                Console.WriteLine("There was a draw!");
+            }
         }
 
         public void GetWinner(string moveOne, string moveTwo)
