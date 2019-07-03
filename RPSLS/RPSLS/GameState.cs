@@ -51,6 +51,8 @@ namespace RPSLS
                 playerTwo = new AIPlayer();
             }
 
+            Console.WriteLine("---------------------------------------------------------");
+
             int numGames = 0; ;
             string numGamesStr = "";
             bool validInt = false;
@@ -96,6 +98,8 @@ namespace RPSLS
             }
             while (validInt == false);
 
+            Console.WriteLine("---------------------------------------------------------");
+
             do
             {
                 GameLoop();
@@ -123,12 +127,16 @@ namespace RPSLS
             }
             while (playerOneMoveStr.ToLower() != "rock" && playerOneMoveStr.ToLower() != "paper" && playerOneMoveStr.ToLower() != "scissors" && playerOneMoveStr.ToLower() != "lizard" && playerOneMoveStr.ToLower() != "spock");
 
+            Console.WriteLine("---------------------------------------------------------");
+
             Console.WriteLine("Player Two:");
             do
             {
                 playerTwoMoveStr = playerTwo.GetChoice();
             }
             while (playerTwoMoveStr.ToLower() != "rock" && playerTwoMoveStr.ToLower() != "paper" && playerTwoMoveStr.ToLower() != "scissors" && playerTwoMoveStr.ToLower() != "lizard" && playerTwoMoveStr.ToLower() != "spock");
+
+            Console.WriteLine("---------------------------------------------------------");
 
             playerOne.AssignPlayerMove(playerOneMoveStr);
             playerTwo.AssignPlayerMove(playerTwoMoveStr);
@@ -150,6 +158,8 @@ namespace RPSLS
             {
                 Console.WriteLine("There was a draw!");
             }
+
+            Console.WriteLine("---------------------------------------------------------");
         }
     }
 }
