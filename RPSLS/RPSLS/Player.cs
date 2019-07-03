@@ -8,8 +8,8 @@ namespace RPSLS
 {
     abstract class Player
     {
-        public int score;
-        public PlayerMove move;
+        protected int score;
+        protected PlayerMove move;
 
         public Player()
         {
@@ -20,23 +20,31 @@ namespace RPSLS
 
         public PlayerMove AssignPlayerMove (string playerMoveStr)
         {
+            List<PlayerMove> playerMoves = new List<PlayerMove>();
+
+            playerMoves.Add(new RockMove("rock"));
+            playerMoves.Add(new PaperMove("paper"));
+            playerMoves.Add(new ScissorsMove("scissors"));
+            playerMoves.Add(new LizardMove("lizard"));
+            playerMoves.Add(new SpockMove("spock"));
+
             PlayerMove playerMove = new RockMove("invalid");
             switch (playerMoveStr)
             {
                 case "rock":
-                    playerMove =  new RockMove("rock");
+                    playerMove =  playerMoves[0];
                     break;
                 case "paper":
-                    playerMove = new PaperMove("paper");
+                    playerMove = playerMoves[1];
                     break;
                 case "scissors":
-                    playerMove = new ScissorsMove("scissors");
+                    playerMove = playerMoves[2];
                     break;
                 case "lizard":
-                    playerMove = new LizardMove("lizard");
+                    playerMove = playerMoves[3];
                     break;
                 case "spock":
-                    playerMove = new SpockMove("spock");
+                    playerMove = playerMoves[4];
                     break;
                 default:
                     break;
@@ -50,5 +58,19 @@ namespace RPSLS
             return move.GetWinner(playerMove);
         }
 
+        public int GetScore()
+        {
+            return score;
+        }
+
+        public PlayerMove GetMove()
+        {
+            return move;
+        }
+
+        public void IncrementScore()
+        {
+            score++;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace RPSLS
 {
     abstract class PlayerMove
     {
-        public string name;
+        protected string name;
 
         public PlayerMove(string moveName)
         {

@@ -8,8 +8,8 @@ namespace RPSLS
 {
     class GameState
     {
-        public Player playerOne;
-        public Player playerTwo;
+        private Player playerOne;
+        private Player playerTwo;
 
         public GameState()
         {
@@ -51,23 +51,68 @@ namespace RPSLS
                 playerTwo = new AIPlayer();
             }
 
+            int numGames = 0; ;
+            string numGamesStr = "";
+            bool validInt = false;
+            bool errorThrown = false;
             do
             {
-                GameLoop(playerOne, playerTwo);
-            }
-            while (playerOne.score < 2 && playerTwo.score < 2);
+                Console.WriteLine("Best of how many games? Must be a positive whole number.");
+                numGamesStr = Console.ReadLine();
+                try
+                {
+                    numGames = System.Convert.ToInt32(numGamesStr);
+                }
+                catch (FormatException)
+                {
 
-            if (playerOne.score >= 2)
-            {
-                Console.WriteLine("Player One wins with " + playerOne.score + " points!");
+                    Console.WriteLine("Please enter a valid whole number.");
+                    errorThrown = true;
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Please enter a smaller whole number.");
+                    errorThrown = true;
+                }
+                if (numGames % 2 == 1)
+                {
+                    numGames++;
+                }
+                numGames /= 2;
+                if (numGames < 1 && errorThrown == false)
+                {
+                    Console.WriteLine("Please enter a whole number greater than zero.");
+                }
+                else if (errorThrown == true)
+                {
+                    errorThrown = false;
+                }
+                else
+                {
+                    validInt = true;
+                    Console.WriteLine("Requires " + numGames + " points to win.");
+                    Console.ReadKey();
+                }
             }
-            else if (playerTwo.score >= 2)
+            while (validInt == false);
+
+            do
             {
-                Console.WriteLine("Player Two wins with " + playerTwo.score + " points!");
+                GameLoop();
+            }
+            while (playerOne.GetScore() < numGames && playerTwo.GetScore() < numGames);
+
+            if (playerOne.GetScore() >= numGames)
+            {
+                Console.WriteLine("Player One wins with " + playerOne.GetScore() + " points!");
+            }
+            else if (playerTwo.GetScore() >= 2)
+            {
+                Console.WriteLine("Player Two wins with " + playerTwo.GetScore() + " points!");
             }
         }
 
-        public void GameLoop(Player first, Player second)
+        private void GameLoop()
         {
             string playerOneMoveStr = "invalid";
             string playerTwoMoveStr = "invalid";
@@ -88,32 +133,23 @@ namespace RPSLS
             playerOne.AssignPlayerMove(playerOneMoveStr);
             playerTwo.AssignPlayerMove(playerTwoMoveStr);
 
-            bool playerOneWin = playerOne.GetWinOrLose(playerTwo.move);
-            bool playerTwoWin = playerTwo.GetWinOrLose(playerOne.move);
+            bool playerOneWin = playerOne.GetWinOrLose(playerTwo.GetMove());
+            bool playerTwoWin = playerTwo.GetWinOrLose(playerOne.GetMove());
 
             if (playerOneWin == true && playerTwoWin == false)
             {
                 Console.WriteLine("Player One gets a point!");
-                playerOne.score++;
+                playerOne.IncrementScore();
             }
             else if (playerOneWin == false && playerTwoWin == true)
             {
                 Console.WriteLine("Player Two gets a point!");
-                playerTwo.score++;
+                playerTwo.IncrementScore();
             }
             else
             {
                 Console.WriteLine("There was a draw!");
             }
-        }
-
-        public void GetWinner(string moveOne, string moveTwo)
-        {
-        }
-
-        public void assignObj(string selectedMoveStr)
-        {
-
         }
     }
 }
