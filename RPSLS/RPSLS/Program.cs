@@ -10,6 +10,12 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
+            GameState game = new GameState();
+
+            game.StartGame();
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

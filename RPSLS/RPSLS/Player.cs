@@ -11,6 +11,6 @@ namespace RPSLS
         public int score;
         public PlayerMove move;
 
-        public abstract void CheckWinner(PlayerMove play);
+        public abstract string GetChoice();
     }
 }

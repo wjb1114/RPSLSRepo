@@ -8,9 +8,9 @@ namespace RPSLS
 {
     class HumanPlayer : Player
     {
-        public override void CheckWinner(PlayerMove play)
+        public override string GetChoice()
         {
-
+            return "invalid";
         }
     }
 }
