@@ -159,6 +159,8 @@ namespace RPSLS
                 Console.WriteLine("There was a draw!");
             }
 
+            Console.WriteLine("Player One has " + playerOne.GetScore() + " points. Player Two has " + playerTwo.GetScore() + " points.");
+            Console.ReadKey();
             Console.WriteLine("---------------------------------------------------------");
         }
     }

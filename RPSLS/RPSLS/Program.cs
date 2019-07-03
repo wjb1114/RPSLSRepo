@@ -10,7 +10,6 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
-            GameState game = new GameState();
             Console.WriteLine("Thank you for playing \"Rock Paper Scissors Lizard Spock\"!");
             Console.WriteLine("The rules are simple. You pick an action, and so does your oppenent.\nEach action either beats or is defeated by every other action.");
             Console.WriteLine("Rock crushes Scissors");
@@ -29,6 +28,7 @@ namespace RPSLS
             string playAgainStr = "";
             do
             {
+                GameState game = new GameState();
                 game.StartGame();
                 do
                 {
