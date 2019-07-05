@@ -18,6 +18,7 @@ namespace RPSLS
             string opposingName = opposingMove.GiveMoveName();
             if (opposingName == "paper" || opposingName == "lizard")
             {
+                Console.WriteLine("Scissors beats " + opposingName + "!");
                 return true;
             }
             else

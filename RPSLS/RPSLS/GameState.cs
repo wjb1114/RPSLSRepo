@@ -156,6 +156,7 @@ namespace RPSLS
             }
             else
             {
+                Console.WriteLine("Both players selected " + playerOne.GetMove().GiveMoveName() + "!");
                 Console.WriteLine("There was a draw!");
             }
 

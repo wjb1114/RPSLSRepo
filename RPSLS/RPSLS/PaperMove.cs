@@ -17,6 +17,7 @@ namespace RPSLS
             string opposingName = opposingMove.GiveMoveName();
             if (opposingName == "spock" || opposingName == "rock")
             {
+                Console.WriteLine("Paper beats " + opposingName + "!");
                 return true;
             }
             else

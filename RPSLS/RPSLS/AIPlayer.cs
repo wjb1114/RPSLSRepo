@@ -8,7 +8,7 @@ namespace RPSLS
 {
     class AIPlayer : Player
     {
-        public Random rand;
+        private Random rand;
 
         public AIPlayer()
         {
