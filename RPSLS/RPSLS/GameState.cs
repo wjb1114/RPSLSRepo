@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPSLS
 {
@@ -17,6 +13,7 @@ namespace RPSLS
 
         public void StartGame()
         {
+            // each player can be human or ai, based on text input
             string playerOneChoice = "";
             do
             {
@@ -53,6 +50,7 @@ namespace RPSLS
 
             Console.WriteLine("---------------------------------------------------------");
 
+            // text input used to determine numer of games to be played
             int numGames = 0; ;
             string numGamesStr = "";
             bool validInt = false;
@@ -100,12 +98,14 @@ namespace RPSLS
 
             Console.WriteLine("---------------------------------------------------------");
 
+            // mian game loop is executed until a player has enough points to win
             do
             {
                 GameLoop();
             }
             while (playerOne.GetScore() < numGames && playerTwo.GetScore() < numGames);
 
+            // display winning player alongside their score
             if (playerOne.GetScore() >= numGames)
             {
                 Console.WriteLine("Player One wins with " + playerOne.GetScore() + " points!");
@@ -118,6 +118,7 @@ namespace RPSLS
 
         private void GameLoop()
         {
+            // each player makes a choice for what move they will use
             string playerOneMoveStr = "invalid";
             string playerTwoMoveStr = "invalid";
             Console.WriteLine("Player One:");
@@ -138,12 +139,15 @@ namespace RPSLS
 
             Console.WriteLine("---------------------------------------------------------");
 
+            // text input from aove step is ues to assign PLayerMOve object to each player
             playerOne.AssignPlayerMove(playerOneMoveStr);
             playerTwo.AssignPlayerMove(playerTwoMoveStr);
 
+            // get win or lose, true is a win, false is a lose or a draw
             bool playerOneWin = playerOne.GetWinOrLose(playerTwo.GetMove());
             bool playerTwoWin = playerTwo.GetWinOrLose(playerOne.GetMove());
 
+            // increment scores based on true/false from GetWinOrLose method
             if (playerOneWin == true && playerTwoWin == false)
             {
                 Console.WriteLine("Player One gets a point!");
@@ -160,8 +164,27 @@ namespace RPSLS
                 Console.WriteLine("There was a draw!");
             }
 
+            // display total score for both playes after each round
             Console.WriteLine("Player One has " + playerOne.GetScore() + " points. Player Two has " + playerTwo.GetScore() + " points.");
             Console.ReadKey();
+            Console.WriteLine("---------------------------------------------------------");
+        }
+
+        // displays instructions when first launching the game application
+        public void InitializeText()
+        {
+            Console.WriteLine("Thank you for playing \"Rock Paper Scissors Lizard Spock\"!");
+            Console.WriteLine("The rules are simple. You pick an action, and so does your oppenent.\nEach action either beats or is defeated by every other action.");
+            Console.WriteLine("Rock crushes Scissors");
+            Console.WriteLine("Scissors cuts Paper");
+            Console.WriteLine("Paper covers Rock");
+            Console.WriteLine("Rock crushes Lizard");
+            Console.WriteLine("Lizard poisons Spock");
+            Console.WriteLine("Spock smashes Scissors");
+            Console.WriteLine("Scissors decapitates Lizard");
+            Console.WriteLine("Lizard eats Paper");
+            Console.WriteLine("Paper disproves Spock");
+            Console.WriteLine("Spock vaporizes Rock");
             Console.WriteLine("---------------------------------------------------------");
         }
     }

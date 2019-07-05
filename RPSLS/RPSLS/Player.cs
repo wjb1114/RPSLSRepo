@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RPSLS
 {
@@ -18,7 +14,8 @@ namespace RPSLS
 
         public abstract string GetChoice();
 
-        public PlayerMove AssignPlayerMove (string playerMoveStr)
+        // assigns PlayerMove child object to move based on text values
+        public void AssignPlayerMove (string playerMoveStr)
         {
             List<PlayerMove> playerMoves = new List<PlayerMove>();
 
@@ -50,7 +47,6 @@ namespace RPSLS
                     break;
             }
             move = playerMove;
-            return playerMove;
         }
 
         public bool GetWinOrLose(PlayerMove playerMove)

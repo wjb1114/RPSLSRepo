@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPSLS
 {
@@ -14,6 +10,8 @@ namespace RPSLS
         {
             rand = new Random();
         }
+
+        // Selects 1 of the 5 valid moves using Random()
         public override string GetChoice()
         {
             int choiceNum = GetRandomChoice();

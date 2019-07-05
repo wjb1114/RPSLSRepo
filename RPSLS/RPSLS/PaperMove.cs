@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPSLS
 {
@@ -12,6 +8,8 @@ namespace RPSLS
         {
 
         }
+
+        // returns true if wins, returns false otherwise
         public override bool GetWinner(PlayerMove opposingMove)
         {
             string opposingName = opposingMove.GiveMoveName();

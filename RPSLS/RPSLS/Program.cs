@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPSLS
 {
@@ -10,25 +6,15 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Thank you for playing \"Rock Paper Scissors Lizard Spock\"!");
-            Console.WriteLine("The rules are simple. You pick an action, and so does your oppenent.\nEach action either beats or is defeated by every other action.");
-            Console.WriteLine("Rock crushes Scissors");
-            Console.WriteLine("Scissors cuts Paper");
-            Console.WriteLine("Paper covers Rock");
-            Console.WriteLine("Rock crushes Lizard");
-            Console.WriteLine("Lizard poisons Spock");
-            Console.WriteLine("Spock smashes Scissors");
-            Console.WriteLine("Scissors decapitates Lizard");
-            Console.WriteLine("Lizard eats Paper");
-            Console.WriteLine("Paper disproves Spock");
-            Console.WriteLine("Spock vaporizes Rock");
-            Console.WriteLine("---------------------------------------------------------");
+            GameState game = new GameState();
+            game.InitializeText();
 
+            // logic is run at least once, and keeps running until input is received to signal the end of the game loop
             bool playAgain = false;
             string playAgainStr = "";
             do
             {
-                GameState game = new GameState();
+                game = new GameState();
                 game.StartGame();
                 do
                 {

@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPSLS
 {
     class HumanPlayer : Player
     {
+        public HumanPlayer()
+        {
+
+        }
+
+        // player chosses one of five valid choices
         public override string GetChoice()
         {   string playerChoice = "invalid";
             bool isValidChoice = false;
@@ -30,11 +32,6 @@ namespace RPSLS
             }
             while (isValidChoice == false);
             return playerChoice.ToLower();
-        }
-
-        public HumanPlayer()
-        {
-
-        }
+        }      
     }
 }
